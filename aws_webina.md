@@ -115,3 +115,26 @@
   ![image](https://user-images.githubusercontent.com/47103479/135984765-d506ff3d-2ba5-42a3-944b-4f24f011890d.png)
   ![image](https://user-images.githubusercontent.com/47103479/135985197-2f3afd86-c875-493b-838e-420b683143b1.png)
 
+## 네트워킹
+- Amazon VPC : 리전 범위의 서비스 
+ 
+![image](https://user-images.githubusercontent.com/47103479/136120647-67457705-e0e3-4789-a802-2cef785f9bf8.png)
+![image](https://user-images.githubusercontent.com/47103479/136120829-6faa8aa7-bb39-43d3-8183-dae93f2bfed3.png)
+![image](https://user-images.githubusercontent.com/47103479/136120930-0c1fbd00-2342-4963-b13a-08cbf6917eb8.png)
+![image](https://user-images.githubusercontent.com/47103479/136121083-1b1d6298-d1eb-4552-a90f-3e19ae8e6f8c.png)
+![image](https://user-images.githubusercontent.com/47103479/136121190-4fcfb2b4-59ff-4f46-97bf-511d6dad1650.png)
+![image](https://user-images.githubusercontent.com/47103479/136121422-560f42c0-0339-48b1-8b88-96750ced2b26.png)
+![image](https://user-images.githubusercontent.com/47103479/136121824-cf951de5-a0a5-4e56-b890-b091d1f94a9e.png)
+![image](https://user-images.githubusercontent.com/47103479/136132535-92251633-fd13-4843-8d3b-90ad23a51b9b.png)
+![image](https://user-images.githubusercontent.com/47103479/136132863-ad4cb2be-bf52-44b1-879d-deb75f9b9dc6.png)
+![image](https://user-images.githubusercontent.com/47103479/136133126-e8b3059e-7851-472f-bfa8-9ea06ad02a2f.png)
+![image](https://user-images.githubusercontent.com/47103479/136133792-e54abda7-dc95-4a2f-9b1b-3804a03cbbda.png)
+- AWS Trusted Advisor : 비용 절감, 성능, 개선, 보안 강화에 도움이 되는 지침을 제공하는 서비스 
+
+## IoT
+![image](https://user-images.githubusercontent.com/47103479/136139745-ba021383-28a8-4e51-9f89-4ee95cbed1a3.png)
+![image](https://user-images.githubusercontent.com/47103479/136139922-df6173cc-29fa-4b9f-9a2f-c35bae4e4780.png)
+![image](https://user-images.githubusercontent.com/47103479/136139975-003a44ec-3237-4ee7-97c8-9acc5f28ce0f.png)
+![image](https://user-images.githubusercontent.com/47103479/136140490-57edcf39-9e7d-408b-896b-9462e8a72abb.png)
+![image](https://user-images.githubusercontent.com/47103479/136140551-6e35b5ce-4056-430d-b2a9-652c5876ea2e.png)
+![image](https://user-images.githubusercontent.com/47103479/136141515-c0b1b64f-915c-4ed5-8861-2fa002853468.png)
