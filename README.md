@@ -59,10 +59,10 @@
 
 ### EC2 요금
    * 사용한 컴퓨팅 시간에 대해서만 비용 지불 
-   * 온디맨드
+   * 온디맨드 : 온디맨드 인스턴스는 6개월 동안만 실행되고 중단을 견뎌야 하는 요구 사항을 충족합니다. 하지만 최소 약정 기간이 필요 없고, 중단을 견딜 수 있음
    * Amazon EC2 Savings Plans 
-   * 예약 인스턴스
-   * 스팟 인스턴스
+   * 예약 인스턴스 : 예약 인스턴스는 1년 또는 3년의 약정 기간이 필요합니다. 이 시나리오의 워크로드는 6개월 동안만 실행됨
+   * 스팟 인스턴스 : 총 6개월 동안 실행되며 중단을 견딜 수 있는 워크로드가 있습니다. 가장 비용 효율적인 Amazon EC2 구매 옵션
    * 전용 호스트
    * Amazon EC2 Savings Plans와 스팟 인스턴스의 차이점은 무엇입니까?
       * Amazon EC2 Savings Plans는 1년 또는 3연 기간 동안 컴퓨팅 사용량이 일정한 워크로드에 매우 적합 / 온디맨드 비용에 비해 최대 72%까지 컴퓨팅 비용 절감 가능
@@ -73,3 +73,67 @@
       * 변화하는 애플리케이션 수요에 따라 Amazon EC2 인스턴스를 자동으로 추가하거나 제거 / 필요시 자동 조정 
       * 동적 조정 : 수요 변화에 대응
       * 예측 조정 : 예측된 수요에 따라 적절한 수의 Amazone EC2 인스턴스를 자동으로 예약  
+      ![image](https://user-images.githubusercontent.com/47103479/137251184-6b3395e1-c38b-42e8-b7e9-f6b6fdfe044d.png)
+      
+      * 최소 용량 : Auto Scaling 그룹을 생성한 직후 시작되는 Amazon EC2 인스턴스의 수
+      * Amazon EC2 Auto Scaling은 Amazon EC2 인스턴스를 사용하므로 사용하는 인스턴스에 대해서만 비용을 지불
+      * 수요가 적을 때 불필요한 Amazon EC2 인스턴스 제거
+      * 온라인 상점의 인기 있는 세일 기간 중 두 번째 Amazon EC2 인스턴스 추가
+      * 수요에 맞춰 Amazon EC2 인스턴스 수를 자동으로 조정
+
+
+
+### Elastic Load Balancing을 사용하여 트래픽 리디렉션(ELB)
+![image](https://user-images.githubusercontent.com/47103479/137251747-e2a29c02-4d63-4f37-ad36-af8bd1c42f15.png)
+
+- ELB : 들어오는 애플리케이션 트래픽을 Amazon EC2 인스턴스와 같은 여러 리소스에 자동으로 분산하는 AWS 서비스  
+   - 로드 밸런서는 Auto Scaling 그룹으로 들어오는 모든 웹 트래픽의 단일 접점 역할(들어오는 트래픽의 양에 맞춰 Amazon EC2 인스턴스를 추가하거나 제거하므로 이러한 요청이 로드 밸런서로 먼저 라우팅)
+   - 단일 Amazon EC2 인스턴스가 전체 워크로드를 처리하지 않아도 되도록 보장
+   - ![image](https://user-images.githubusercontent.com/47103479/137252010-62449ff8-33ac-4d25-8fca-7fa951ecf3b5.png)
+   - ![image](https://user-images.githubusercontent.com/47103479/137252047-9deace1c-cf78-43c7-a304-e1169352d855.png)
+
+#### 메시징 및 대기열 
+- 모놀리식 애플리케이션 : 구성 요소(데이터베이스,서버,사용자 인터페이스, 비즈니스 로직)가 밀결합된 애플리케이션 의 아키텍처
+   - 단일 구성 요소에 장애가 발생했을 때 애플리케이션 가용성을 유지할 수 있도록 마이크로서비스 접근 방식을 통해 애플리케이션을 설계
+- Amazon Simple Notification Service(Amazon SNS)
+   - 게시/구독 서비스입니다. 게시자는 Amazon SNS 주제를 사용하여 구독자에게 메시지를 게시합니다. 이는 커피숍에서 계산원이 음료를 만드는 바리스타에게 주문 사항을 전달하는 것과 비슷
+   - 구독자는 웹 서버, 이메일 주소, AWS Lambda 함수 또는 그 밖의 여러 옵션이 될 수 있음
+- Amazon Simple Queue Service(Amazon SQS)
+   - 메시지 대기열 서비스
+   - Amazon SQS를 사용하면 메시지 손실이나 다른 서비스 사용 없이 소프트웨어 구성 요소 간에 메시지를 전송, 저장, 수신
+
+### 추가 컴퓨팅 서비스
+- 서버리스 : 코드가 서버에서 실행되지만 이러한 서버를 프로비저닝하거나 관리할 필요가 없다는 뜻입니다. 서버리스 컴퓨팅을 사용하면 서버를 유지 관리하는 대신 새로운 제품과 기능을 혁신하는 데 더 집중
+   - 서버리스 애플리케이션을 자동으로 확장할 수 있는 유연성입니다. 서버리스 컴퓨팅은 처리량 및 메모리와 같은 소비 단위를 수정하여 애플리케이션의 용량을 조정
+   - 서버리스 컴퓨팅용 AWS 서비스는 AWS Lambda
+- AWS Lambda : 서버를 프로비저닝하거나 관리할 필요 없이 코드를 실행할 수 있는 서비스
+   ![image](https://user-images.githubusercontent.com/47103479/137340473-6d2ed7a2-6229-4957-a6f2-3b17746c44d0.png)
+
+- 컨테이너 
+   - 컨테이너는 애플리케이션의 코드와 종속성을 하나의 객체로 패키징하는 표준 방식을 제공합니다. 보안성, 안정성, 확장성 요구 사항이 매우 중요한 프로세스 및 워크플로에도 컨테이너를 사용
+   - 컨테이너 오케스트레이션 서비스는 컨테이너식 애플리케이션을 배포, 관리, 확장하는 데 도움을 줄 수 있음
+- Amazon Elastic Container Service(Amazon ECS)
+   -  AWS에서 컨테이너식 애플리케이션을 실행하고 확장할 수 있는 확장성이 뛰어난 고성능 컨테이너 관리 시스템
+   -  Amazon ECS는 Docker 컨테이너를 지원합니다. 
+      - Docker는 애플리케이션을 신속하게 구축, 테스트, 배포할 수 있는 소프트웨어 플랫폼
+- Amazon Elastic Kubernetes Service(Amazon EKS)
+   - AWS에서 Kubernetes를 실행하는 데 사용할 수 있는 완전 관리형 서비스
+      - Kubernetes는 컨테이너식 애플리케이션을 대규모로 배포하고 관리하는 데 사용할 수 있는 오픈 소스 소프트웨어
+- AWS Fargate
+   - AWS Fargate는 컨테이너용 서버리스 컴퓨팅 엔진으로, Amazon ECS와 Amazon EKS에서 작동
+   - AWS Fargate를 사용하는 경우 서버를 프로비저닝하거나 관리할 필요가 없습니다. AWS Fargate는 자동으로 서버 인프라를 관리
+- Amazon EC2 : 클라우드에서 가상 서버를 실행할 수 있는 서비스
+   - 예약 인스턴스는 1년 또는 3년 약정이 필요
+
+## 모듈 3: 글로벌 인프라 및 안정성
+
+
+# 용어 정리 
+- Amazon EC2 : 클라우드에서 가상 서버를 실행할 수 있는 서비스
+- Amazon Simple Notification Service(Amazon SNS) : Amazon SNS는 게시/구독 서비스입니다. 게시자는 Amazon SNS 주제를 사용하여 구독자에게 메시지를 게시
+- Amazon Simple Queue Service(Amazon SQS) : 메시지 대기열 서비스입니다. 이 서비스는 Amazon SNS와 관련된 메시지 구독 및 주제 모델을 사용하지 않습니다
+- Amazon EC2 Auto Scaling :  사용하면 변화하는 애플리케이션 수요에 따라 Amazon EC2 인스턴스를 자동으로 추가하거나 제거할 수 있습니다.
+- Elastic Load Balancing : 들어오는 애플리케이션 트래픽을 Amazon EC2 인스턴스와 같은 여러 리소스에 자동으로 분산하는 AWS 서비스입니다.
+- Amazon Elastic Container Service(Amazon ECS) : AWS에서 컨테이너식 애플리케이션을 실행하고 확장할 수 있는 확장성이 뛰어난 고성능 컨테이너 관리 시스템, Amazon ECS는 Docker 컨테이너를 지원합니다. 
+- Amazon Elastic Kubernetes Service(Amazon EKS) : AWS에서 Kubernetes를 실행하는 데 사용할 수 있는 완전 관리형 서비스
+- AWS Fargate : AWS Fargate는 컨테이너용 서버리스 컴퓨팅 엔진으로, Amazon ECS와 Amazon EKS에서 작동, AWS Fargate를 사용하는 경우 서버를 프로비저닝하거나 관리할 필요가 없습니다. AWS Fargate는 자동으로 서버 인프라를 관리
