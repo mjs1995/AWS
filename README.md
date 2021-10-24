@@ -350,4 +350,4 @@
 - Amazon Elastic Kubernetes Service(Amazon EKS) : AWS에서 Kubernetes를 실행하는 데 사용할 수 있는 완전 관리형 서비스
 - AWS Fargate : AWS Fargate는 컨테이너용 서버리스 컴퓨팅 엔진으로, Amazon ECS와 Amazon EKS에서 작동, AWS Fargate를 사용하는 경우 서버를 프로비저닝하거나 관리할 필요가 없습니다. AWS Fargate는 자동으로 서버 인프라를 관리
 - AWS Outposts : 하이브리드 클라우드 방식으로 인프라를 실행할 수 있도록 지원하는 서비스, AWS 인프라 및 서비스를 온프레미스 데이터 센터로 확장
-- Amazon Simple Queue Service(Amazon SQS) :  대기열을 통해 소프트웨어 구성 요소 간에 메시지를 전송, 저장, 수신할 수 있는 서비스
+- Amazon Simple Queue Service(Amazon SQS) :  대기열을 통해 소프트웨어 구성 요소 간에 메시지를 전송, 저장, 수신할 수 있는 서비스 
